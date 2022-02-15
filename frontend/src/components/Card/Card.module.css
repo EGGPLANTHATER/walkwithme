@@ -135,24 +135,28 @@
   display: flex;
   flex-direction: column;
 }
-.recruit-title {
-  font-weight: bold;
-  font-size: 1.8rem;
-  color: #333;
-}
 .recruit-info {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 30rem;
-  padding: 1.6rem;
+  padding: 1rem 1.6rem;
   height: 100%;
+}
+.recruit-title {
+  font-weight: bold;
+  font-size: 1.8rem;
+  color: #333;
+  height: 1.6rem;
+  overflow: hidden;
+  margin-bottom: 1rem;
 }
 .recruit-subtitle {
   font-size: 1.4rem;
+  height: 4rem;
   color: #666666;
-  word-break: keep-all;
   line-height: 2rem;
+  overflow: hidden;
 }
 .recruit-bottom {
   display: flex;
