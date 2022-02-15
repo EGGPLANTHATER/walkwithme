@@ -1,9 +1,8 @@
 import { createContext, useReducer } from 'react';
-import { ADD_POSTS, CHANGE_USER_INFO, NOW_POST } from './actionTypes';
+import { CHANGE_USER_INFO, NOW_POST } from './actionTypes';
 
 const initialState = {
   user: null,
-  posts: [],
   post: null,
 };
 
@@ -15,11 +14,6 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         user: action.payload,
-      };
-    case ADD_POSTS:
-      return {
-        ...state,
-        posts: action.payload,
       };
     case NOW_POST:
       return {
