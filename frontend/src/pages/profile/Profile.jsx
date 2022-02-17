@@ -10,6 +10,7 @@ import MyProfile from './MyProfile';
 import List from './List';
 import { Link, useParams } from 'react-router-dom';
 import Button from '../../components/Button/Button';
+import Loading from '../Loading/Loading';
 
 const Profile = () => {
   const { id: userId } = useParams();
@@ -48,7 +49,7 @@ const Profile = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   return (

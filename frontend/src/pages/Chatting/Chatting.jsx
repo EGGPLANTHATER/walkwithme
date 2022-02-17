@@ -10,6 +10,7 @@ import { apiClient } from '../../api/api';
 import io from 'socket.io-client';
 import ScrollToBottom from 'react-scroll-to-bottom';
 import { v4 as uuidv4 } from 'uuid';
+import Loading from '../Loading/Loading';
 
 const currTab = '채팅방';
 
@@ -75,7 +76,7 @@ const Chatting = () => {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   return (

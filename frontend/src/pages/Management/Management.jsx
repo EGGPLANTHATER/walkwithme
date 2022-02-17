@@ -9,6 +9,7 @@ import { useParams } from 'react-router-dom';
 import { Context } from '../../context';
 import { NOW_POST } from '../../context/actionTypes';
 import { v4 as uuidv4 } from 'uuid';
+import Loading from '../Loading/Loading';
 
 const currTab = '회원 관리';
 
@@ -84,7 +85,7 @@ const Manager = () => {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   return (

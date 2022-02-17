@@ -7,6 +7,7 @@ import Dropdown from '../components/Dropdown/Dropdown';
 import styles from './Home.module.css';
 import { v4 as uuidv4 } from 'uuid';
 import Pagination from '../components/Pagination/Pagination';
+import Loading from './Loading/Loading';
 
 const Home = () => {
   const [postsObj, setPostsObj] = useState({
@@ -47,17 +48,7 @@ const Home = () => {
   };
 
   if (loading) {
-    return (
-      <div className={styles.load}>
-        <div>G</div>
-        <div>N</div>
-        <div>I</div>
-        <div>D</div>
-        <div>A</div>
-        <div>O</div>
-        <div>L</div>
-      </div>
-    );
+    return <Loading />;
   }
 
   return (

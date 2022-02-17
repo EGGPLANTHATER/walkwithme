@@ -46,7 +46,6 @@ function App() {
       <Route path='/:id/profile' element={<Profile />} />
       <Route path='/:id/management' element={<Management />} />
 
-      <Route path='/:id' element={<Recruit />} />
       <Route path='/test' element={<Test />} />
       <Route path='/:id' element={<Recruit />} />
     </Routes>
