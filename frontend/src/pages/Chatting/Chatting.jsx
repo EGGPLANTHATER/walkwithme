@@ -16,7 +16,7 @@ const currTab = '채팅방';
 
 const Chatting = () => {
   const [state, dispatch] = useContext(Context);
-  const { user, post } = state;
+  let { user, post } = state;
   const { id: postId } = useParams();
   const [loading, setLoading] = useState(true);
   const [currMessage, setCurrMessage] = useState('');
@@ -24,6 +24,10 @@ const Chatting = () => {
   const socket = useRef();
 
   useEffect(() => {
+    if (user === null)
+      user = JSON.parse(window.localStorage.getItem('loginUser'));
+    if (post === null) post = JSON.parse(window.localStorage.getItem('post'));
+
     socket.current = io('http://localhost:4000', {
       withCredentials: true,
       extraHeaders: {
@@ -35,9 +39,6 @@ const Chatting = () => {
 
   useEffect(() => {
     socket.current.emit('addUser', user._id);
-    socket.current.on('getUsers', (users) => {
-      console.log(users);
-    });
   }, [user]);
 
   const getPost = async () => {
@@ -47,11 +48,15 @@ const Chatting = () => {
       type: NOW_POST,
       payload: response.data,
     });
+
     setLoading(false);
   };
 
   useEffect(() => {
     getPost();
+    if (post === null) post = JSON.parse(window.localStorage.getItem('post'));
+    else window.localStorage.setItem('post', JSON.stringify(post));
+
     setMessageList(post.chat);
     return () => {
       dispatch({
@@ -70,15 +75,15 @@ const Chatting = () => {
         profileImgURL: user.profileImgURL,
       });
 
-      setCurrMessage('');
-      setMessageList(response.data);
-    }
+    post = { ...post, chat: response.data };
+    window.localStorage.setItem('post', JSON.stringify(post));
+    setCurrMessage('');
+    setMessageList(response.data);
   };
 
   if (loading) {
     return <Loading />;
   }
-
   return (
     <>
       <Header />
@@ -86,23 +91,28 @@ const Chatting = () => {
         <Tab currTab={currTab} postId={postId} post={post} user={user} />
         <div className={styles.chatting}>
           <div className={styles.room}>
-            <div className={styles.chatBody}>
-              <ScrollToBottom className={styles.messageContainer}>
-                {messageList.map((messageContent) => (
-                  <div
-                    key={messageContent.time}
-                    className={styles.chat}
-                    id={user._id === messageContent._id ? 'you' : 'other'}
-                  >
-                    <div className={styles.profile}>
-                      <Avatar />
-                    </div>
-                    <div className={styles.info}>
-                      <div className={styles.author}>
-                        <h3>{messageContent.nickname}</h3>
-                        <p className={styles.date}>{messageContent.time}</p>
-                      </div>
-                      <h3 className={styles.content}>{messageContent.text}</h3>
+            <ScrollToBottom className='message-container'>
+              {messageList.map((messageContent) => (
+                <div
+                  key={messageContent.time}
+                  className={styles.chat}
+                  id={user._id === messageContent._id ? 'you' : 'other'}
+                >
+                  <div className={styles.profile}>
+                    <Avatar />
+                  </div>
+                  <div className={styles.info}>
+                    <div className={styles.author}>
+                      <h3>{messageContent.nickname}</h3>
+                      <p className={styles.date}>
+                        {new Date(messageContent.time).toLocaleString('ko-KR', {
+                          year: 'numeric',
+                          month: 'numeric',
+                          day: 'numeric',
+                          hour: 'numeric',
+                          minute: 'numeric',
+                        })}
+                      </p>
                     </div>
                   </div>
                 ))}
