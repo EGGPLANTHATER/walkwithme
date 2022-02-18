@@ -1,0 +1,83 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+.container article {
+  width: 50rem;
+}
+
+.title-area {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.title-area h2 {
+  font-size: 2.2rem;
+  font-weight: 500;
+  color: var(--first-color);
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+}
+article select {
+  margin-bottom: 1rem;
+}
+
+/* 인풋 파일 */
+.filebox,
+.areaBox {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.file-name {
+  display: flex;
+  height: 3rem;
+  padding: 0 1rem;
+  border: 1px solid var(--input-select-border-color);
+  border-radius: 0.4rem;
+  width: 80%;
+  background-color: var(--input-background-color);
+  color: var(--input-color);
+}
+
+.filebox label {
+  display: flex;
+  color: #ffffff;
+  background-color: #7eda8b;
+  cursor: pointer;
+  height: 3rem;
+  border-radius: 0.4rem;
+  font-size: 1.4rem;
+  justify-content: center;
+  align-items: center;
+  width: 9rem;
+}
+
+.filebox input[type='file'] {
+  position: absolute;
+  width: 0;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+}
+.imgInput {
+  margin-bottom: 2rem;
+}
+/* 이미지 미리보기 */
+.preview__img {
+  width: 100%;
+  height: 30rem;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border-radius: 0.6rem;
+}

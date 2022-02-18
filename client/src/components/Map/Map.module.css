@@ -1,0 +1,28 @@
+.map-container {
+  width: 78rem;
+  height: 44.4rem;
+  border-top: 0.1rem var(--detail-card-border-color) solid;
+}
+
+.map-text {
+  font-size: 1.6rem;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+
+  display: flex;
+}
+
+.label {
+  color: var(--recruit-title-color);
+  margin-right: 1.8rem;
+}
+
+.area {
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+.map {
+  height: 38.9rem;
+  border-radius: 0.8rem;
+}

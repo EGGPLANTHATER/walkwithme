@@ -2,8 +2,8 @@
   "name": "frontend",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "vite --config vite.dev.config.js",
+    "build": "vite --config vite.dev.config.js build",
     "preview": "vite preview"
   },
   "dependencies": {

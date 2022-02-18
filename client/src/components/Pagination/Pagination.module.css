@@ -1,0 +1,56 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 6rem 0;
+}
+
+.arrow {
+  background: transparent;
+  cursor: pointer;
+}
+
+.arrow.left,
+.arrow.right {
+  color: #333;
+  font-size: 2rem;
+  user-select: none;
+}
+
+.arrow.left {
+  margin-right: 2rem;
+}
+
+.arrow.right {
+  margin-left: 2rem;
+}
+
+.arrow:disabled span {
+  color: #ccc;
+  cursor: default;
+}
+
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  line-height: 2rem;
+  color: var(--text-color);
+  width: 2.4rem;
+  height: 2.4rem;
+  background: transparent;
+  cursor: pointer;
+  user-select: none;
+}
+
+.page + .page {
+  margin-left: 1rem;
+}
+
+.page[active='true'] {
+  color: #fff;
+  background: var(--first-color);
+  border-radius: 0.25rem;
+  font-weight: bold;
+}
